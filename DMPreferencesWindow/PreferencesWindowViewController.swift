@@ -123,6 +123,10 @@ class PreferencesWindowViewController: NSViewController {
 
       let newVisibleViewController = viewControllers[newVisiblePreferencePaneIdentifier]
       let newVisibleSubview = newVisibleViewController.view
+
+      // Set `isHidden` before adding the subview to the hierarchy so that `viewWillAppear`
+      // will only be called once at the end of the animation.
+      newVisibleSubview.isHidden = true
       view.addSubview(newVisibleSubview)
 
       newVisibleSubview.translatesAutoresizingMaskIntoConstraints = false
@@ -133,13 +137,13 @@ class PreferencesWindowViewController: NSViewController {
       ])
 
       guard let window = view.window else {
+         newVisibleSubview.isHidden = false
          return
       }
 
       let animationUUID = UUID()
       currentAnimationUUID = animationUUID
 
-      newVisibleSubview.isHidden = true
       NSAnimationContext.runAnimationGroup({ context in
          let newWindowFrame = PreferencesWindowViewController.estimateFrame(for: window,
                                                                             visibleSubview: newVisibleSubview)
