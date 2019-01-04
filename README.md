@@ -40,7 +40,7 @@ class GeneralPreferencePaneViewController: NSViewController, PreferencePane, Too
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
    private let preferencesWindowController: PreferencesWindowController = {
-      let preferencePaneViewControllers = [
+      let preferencePaneViewControllers: [NSViewController & PreferencePane & ToolbarItemImageProvider] = [
          GeneralPreferencePaneViewController(),
          // …
       ]
