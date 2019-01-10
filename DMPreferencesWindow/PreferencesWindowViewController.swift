@@ -39,8 +39,6 @@ class PreferencesWindowViewController: NSViewController {
       for viewController in viewControllers {
          addChild(viewController)
       }
-
-      setVisiblePreferencePaneIdentifierWithoutAnimation(visiblePreferencePaneIdentifier)
    }
 
    required init?(coder: NSCoder) {
@@ -53,6 +51,8 @@ class PreferencesWindowViewController: NSViewController {
 
    override func viewDidLoad() {
       super.viewDidLoad()
+
+      setVisiblePreferencePaneIdentifierWithoutAnimation(visiblePreferencePaneIdentifier)
 
       let maxSubviewWidth = calculateMaxSubviewWidth()
       activateWidthConstraints(maxSubviewWidth: maxSubviewWidth)
@@ -95,6 +95,10 @@ class PreferencesWindowViewController: NSViewController {
    func setVisiblePreferencePaneIdentifier(_ newVisiblePreferencePaneIdentifier: PreferencePaneIdentifier,
                                            animated: Bool) {
       guard newVisiblePreferencePaneIdentifier != visiblePreferencePaneIdentifier else {
+         return
+      }
+      guard isViewLoaded else {
+         _visiblePreferencePaneIdentifier = newVisiblePreferencePaneIdentifier
          return
       }
 

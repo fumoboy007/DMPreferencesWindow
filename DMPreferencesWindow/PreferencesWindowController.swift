@@ -69,7 +69,6 @@ public class PreferencesWindowController: NSWindowController, PreferencePaneSele
       windowTitleController.selectedPreferencePaneIdentifier = initialSelectedPreferencePaneIdentifier
       lastViewedPreferencePaneController.lastViewedPreferencePaneIdentifier = initialSelectedPreferencePaneIdentifier
 
-      window.contentViewController = windowViewController
       selectionController.delegate = self
    }
 
@@ -98,6 +97,7 @@ public class PreferencesWindowController: NSWindowController, PreferencePaneSele
          hasBeenShown = true
 
          if let window = window {
+            window.contentViewController = windowViewController
             window.layoutIfNeeded()
             window.center()
          }
