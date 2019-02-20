@@ -121,6 +121,12 @@ class PreferencesWindowViewController: NSViewController {
    //   3. Show new subview.
    private func setVisiblePreferencePaneIdentifierWithAnimation(_ newVisiblePreferencePaneIdentifier: PreferencePaneIdentifier) {
       let oldVisibleViewController = viewControllers[visiblePreferencePaneIdentifier]
+
+      // Hack: Sometimes `viewWillDisappear` is not called inside `removeFromSuperview`.
+      // However, it is reliably called when the view is hidden, so hide the view first
+      // before removing it from the view hierarchy. (`viewWillDisappear` will only be
+      // called once.)
+      oldVisibleViewController.view.isHidden = true
       oldVisibleViewController.view.removeFromSuperview()
 
       _visiblePreferencePaneIdentifier = newVisiblePreferencePaneIdentifier
