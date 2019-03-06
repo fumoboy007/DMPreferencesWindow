@@ -119,7 +119,7 @@ class ToolbarPreferencePaneSelectionController: NSObject, PreferencePaneSelectio
    // MARK: - Performing the Toolbar Item Action
 
    @objc
-   private func performToolbarItemAction(_ sender: Any) {
+   private func performToolbarItemAction(_ sender: Any?) {
       _selectedPreferencePaneIdentifier = PreferencePaneIdentifier(rawValue: toolbar.selectedItemIdentifier!.rawValue)
 
       delegate?.preferencePaneSelectionControllerDidChangeSelectedPreferencePaneIdentifier(self)
