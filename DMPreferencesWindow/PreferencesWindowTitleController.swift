@@ -79,6 +79,7 @@ class PreferencesWindowTitleController {
          window.title = String(format: NSLocalizedString("%1$@ Preferences",
                                                          bundle: .DMPreferencesWindow,
                                                          comment: "The format string for building a generic title for the preferences window. Argument 1 is the app name."),
+                               locale: Locale.current,
                                appName)
       }
    }
