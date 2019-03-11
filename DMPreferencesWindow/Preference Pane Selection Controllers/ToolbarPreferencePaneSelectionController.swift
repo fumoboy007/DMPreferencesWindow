@@ -120,8 +120,16 @@ class ToolbarPreferencePaneSelectionController: NSObject, PreferencePaneSelectio
 
    @objc
    private func performToolbarItemAction(_ sender: Any?) {
-      _selectedPreferencePaneIdentifier = PreferencePaneIdentifier(rawValue: toolbar.selectedItemIdentifier!.rawValue)
+      // At first glance, it may look like we can use `toolbar.selectedItemIdentifier`
+      // instead of `sender`. However, that does not work when the toolbar item action
+      // is triggered by accessibility because we are expected to set
+      // `selectedItemIdentifier` ourselves.
+      guard let selectedItemIdentifier = (sender as? NSToolbarItem)?.itemIdentifier else {
+         return
+      }
+      toolbar.selectedItemIdentifier = selectedItemIdentifier
 
+      _selectedPreferencePaneIdentifier = PreferencePaneIdentifier(rawValue: selectedItemIdentifier.rawValue)
       delegate?.preferencePaneSelectionControllerDidChangeSelectedPreferencePaneIdentifier(self)
    }
 
