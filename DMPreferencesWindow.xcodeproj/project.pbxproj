@@ -132,7 +132,7 @@
 				TargetAttributes = {
 					E6D406AE21D58E3F00FB35E4 = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -142,6 +142,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = E6D406A521D58E3F00FB35E4;
 			productRefGroup = E6D406B021D58E3F00FB35E4 /* Products */;
