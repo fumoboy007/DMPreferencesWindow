@@ -98,6 +98,7 @@ public class PreferencesWindowController: NSWindowController, PreferencePaneSele
 
          if let window = window {
             window.contentViewController = windowViewController
+            window.makeFirstResponder(nil)
             window.layoutIfNeeded()
             window.center()
          }
