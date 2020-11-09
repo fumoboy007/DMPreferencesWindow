@@ -1,6 +1,6 @@
 // MIT License
 //
-// Copyright © 2018-2019 Darren Mo.
+// Copyright © 2018-2020 Darren Mo.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,9 +26,11 @@ class PreferencesWindowTitleController {
    // MARK: - Initialization
 
    init(window: NSWindow,
-        viewControllers: PreferencePaneViewControllers) {
+        viewControllers: PreferencePaneViewControllers,
+        shouldUsePreferencePaneTitleForWindowTitle: Bool) {
       self.window = window
       self.viewControllers = viewControllers
+      self.shouldUsePreferencePaneTitleForWindowTitle = shouldUsePreferencePaneTitleForWindowTitle
       self.selectedPreferencePaneIdentifier = viewControllers.first!.preferencePaneIdentifier
 
       didSetSelectedPreferencePaneIdentifier()
@@ -38,6 +40,7 @@ class PreferencesWindowTitleController {
 
    private let window: NSWindow
    private let viewControllers: PreferencePaneViewControllers
+   private let shouldUsePreferencePaneTitleForWindowTitle: Bool
 
    // MARK: - Selected Preference Pane Identifier
 
@@ -64,9 +67,7 @@ class PreferencesWindowTitleController {
    private func titleDidChange() {
       var title: String?
 
-      // According to the macOS Human Interface Guidelines, we should only show a
-      // preference-pane-specific title if there are multiple preference panes.
-      if viewControllers.count > 1 {
+      if shouldUsePreferencePaneTitleForWindowTitle {
          title = viewControllerForTitle.title
       }
 

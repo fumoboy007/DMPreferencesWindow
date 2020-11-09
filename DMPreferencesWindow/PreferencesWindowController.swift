@@ -33,6 +33,13 @@ public class PreferencesWindowController: NSWindowController, PreferencePaneSele
    // MARK: - Initialization
 
    public convenience init(preferencePaneViewControllers: [NSViewController & PreferencePane & ToolbarItemImageProvider]) {
+      precondition(!preferencePaneViewControllers.isEmpty)
+
+      if preferencePaneViewControllers.count == 1 {
+         self.init(preferencePaneViewController: preferencePaneViewControllers[0])
+         return
+      }
+
       let window = PreferencesWindowController.makeWindow()
       let viewControllers = PreferencePaneViewControllersWithToolbarItemImages(viewControllers: preferencePaneViewControllers)
 
@@ -41,7 +48,20 @@ public class PreferencesWindowController: NSWindowController, PreferencePaneSele
 
       self.init(window: window,
                 selectionController: selectionController,
-                viewControllers: PreferencePaneViewControllers(viewControllers))
+                viewControllers: PreferencePaneViewControllers(viewControllers),
+                shouldUsePreferencePaneTitleForWindowTitle: true)
+   }
+
+   /// Initializes the window controller with a single preference pane view controller.
+   ///
+   /// According to the macOS Human Interface Guidelines, the preferences window should behave differently
+   /// if there is only one preference pane: the window title should be “[App Name] Preferences” and there
+   /// should not be a toolbar.
+   private convenience init(preferencePaneViewController: NSViewController & PreferencePane) {
+      self.init(window: PreferencesWindowController.makeWindow(),
+                selectionController: SingleItemPreferencePaneSelectionController(preferencePaneIdentifier: preferencePaneViewController.preferencePaneIdentifier),
+                viewControllers: PreferencePaneViewControllers(viewControllers: [preferencePaneViewController]),
+                shouldUsePreferencePaneTitleForWindowTitle: false)
    }
 
    private static func makeWindow() -> NSWindow {
@@ -58,11 +78,13 @@ public class PreferencesWindowController: NSWindowController, PreferencePaneSele
 
    private init(window: NSWindow,
                 selectionController: PreferencePaneSelectionController,
-                viewControllers: PreferencePaneViewControllers) {
+                viewControllers: PreferencePaneViewControllers,
+                shouldUsePreferencePaneTitleForWindowTitle: Bool) {
       self.selectionController = selectionController
       self.windowViewController = PreferencesWindowViewController(viewControllers: viewControllers)
       self.windowTitleController = PreferencesWindowTitleController(window: window,
-                                                                    viewControllers: viewControllers)
+                                                                    viewControllers: viewControllers,
+                                                                    shouldUsePreferencePaneTitleForWindowTitle: shouldUsePreferencePaneTitleForWindowTitle)
 
       super.init(window: window)
 

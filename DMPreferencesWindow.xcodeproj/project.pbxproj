@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E623034E2559235100591FF0 /* SingleItemPreferencePaneSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E623034D2559235100591FF0 /* SingleItemPreferencePaneSelectionController.swift */; };
 		E65B924821DD1D5300FB35E4 /* LastViewedPreferencePaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65B924721DD1D5300FB35E4 /* LastViewedPreferencePaneController.swift */; };
 		E65B924A21DD2DED00FB35E4 /* PreferencePaneViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65B924921DD2DED00FB35E4 /* PreferencePaneViewControllers.swift */; };
 		E65B924C21DD3F8400FB35E4 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65B924B21DD3F8400FB35E4 /* UserDefaultsKeys.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E623034D2559235100591FF0 /* SingleItemPreferencePaneSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleItemPreferencePaneSelectionController.swift; sourceTree = "<group>"; };
 		E65B924721DD1D5300FB35E4 /* LastViewedPreferencePaneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastViewedPreferencePaneController.swift; sourceTree = "<group>"; };
 		E65B924921DD2DED00FB35E4 /* PreferencePaneViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencePaneViewControllers.swift; sourceTree = "<group>"; };
 		E65B924B21DD3F8400FB35E4 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				E6D406C421D5926F00FB35E4 /* PreferencePaneSelectionController.swift */,
+				E623034D2559235100591FF0 /* SingleItemPreferencePaneSelectionController.swift */,
 				E6D406C221D590EE00FB35E4 /* ToolbarPreferencePaneSelectionController.swift */,
 			);
 			path = "Preference Pane Selection Controllers";
@@ -175,6 +178,7 @@
 				E65B924C21DD3F8400FB35E4 /* UserDefaultsKeys.swift in Sources */,
 				E6D406C821D5977B00FB35E4 /* PreferencesWindowViewController.swift in Sources */,
 				E6D406C321D590EE00FB35E4 /* ToolbarPreferencePaneSelectionController.swift in Sources */,
+				E623034E2559235100591FF0 /* SingleItemPreferencePaneSelectionController.swift in Sources */,
 				E65B924821DD1D5300FB35E4 /* LastViewedPreferencePaneController.swift in Sources */,
 				E65B924A21DD2DED00FB35E4 /* PreferencePaneViewControllers.swift in Sources */,
 				E6D406C521D5926F00FB35E4 /* PreferencePaneSelectionController.swift in Sources */,
