@@ -49,6 +49,9 @@ public class PreferencesWindowController: NSWindowController, PreferencePaneSele
                             styleMask: [.closable, .titled],
                             backing: .buffered,
                             defer: true)
+      if #available(macOS 11, *) {
+         window.toolbarStyle = .preference
+      }
       window.identifier = NSUserInterfaceItemIdentifier(rawValue: "DMPreferencesWindow.window")
       return window
    }
