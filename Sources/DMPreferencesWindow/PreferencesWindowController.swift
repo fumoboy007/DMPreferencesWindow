@@ -33,8 +33,6 @@ public class PreferencesWindowController: NSWindowController, PreferencePaneSele
    // MARK: - Initialization
 
    public convenience init(preferencePaneViewControllers: [NSViewController & PreferencePane & ToolbarItemImageProvider]) {
-      precondition(!preferencePaneViewControllers.isEmpty)
-
       if preferencePaneViewControllers.count == 1 {
          self.init(preferencePaneViewController: preferencePaneViewControllers[0])
          return

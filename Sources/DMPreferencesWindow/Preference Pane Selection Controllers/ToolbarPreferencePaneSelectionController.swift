@@ -1,6 +1,6 @@
 // MIT License
 //
-// Copyright © 2018-2019 Darren Mo.
+// Copyright © 2018-2020 Darren Mo.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -53,7 +53,7 @@ class ToolbarPreferencePaneSelectionController: NSObject, PreferencePaneSelectio
       toolbar.delegate = self
       window.toolbar = toolbar
 
-      didSetSelectedPreferencePaneIdentifier()
+      updateToolbarSelectedItem()
 
       titleKeyValueObservations = viewControllers.enumerated().map { idxAndViewController in
          let (idx, viewController) = idxAndViewController
@@ -78,11 +78,11 @@ class ToolbarPreferencePaneSelectionController: NSObject, PreferencePaneSelectio
       set {
          _selectedPreferencePaneIdentifier = newValue
 
-         didSetSelectedPreferencePaneIdentifier()
+         updateToolbarSelectedItem()
       }
    }
 
-   private func didSetSelectedPreferencePaneIdentifier() {
+   private func updateToolbarSelectedItem() {
       toolbar.selectedItemIdentifier = NSToolbarItem.Identifier(rawValue: selectedPreferencePaneIdentifier.rawValue)
    }
 
@@ -137,7 +137,7 @@ class ToolbarPreferencePaneSelectionController: NSObject, PreferencePaneSelectio
 
    private static func title(from viewController: NSViewController) -> String {
       return viewController.title ?? NSLocalizedString("Preferences",
-                                                       bundle: .DMPreferencesWindow,
+                                                       bundle: .module,
                                                        comment: "The title of the toolbar item in the preferences window if no custom title is given.")
    }
 

@@ -2,7 +2,7 @@
 
 A preferences window suitable for a macOS app. Its user experience adheres to the [macOS Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/macos/app-architecture/preferences/).
 
-Written using Swift 4.2. Tested on macOS 10.14. MIT license.
+Requires Swift 5.3+. Tested on macOS 11. MIT license.
 
 ## User Features
 

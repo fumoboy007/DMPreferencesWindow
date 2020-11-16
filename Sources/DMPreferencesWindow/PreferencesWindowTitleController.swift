@@ -33,7 +33,7 @@ class PreferencesWindowTitleController {
       self.shouldUsePreferencePaneTitleForWindowTitle = shouldUsePreferencePaneTitleForWindowTitle
       self.selectedPreferencePaneIdentifier = viewControllers.first!.preferencePaneIdentifier
 
-      didSetSelectedPreferencePaneIdentifier()
+      configureTitleKeyValueObservation()
    }
 
    // MARK: - Private Properties
@@ -46,7 +46,7 @@ class PreferencesWindowTitleController {
 
    var selectedPreferencePaneIdentifier: PreferencePaneIdentifier {
       didSet {
-         didSetSelectedPreferencePaneIdentifier()
+         configureTitleKeyValueObservation()
       }
    }
 
@@ -54,7 +54,7 @@ class PreferencesWindowTitleController {
       return viewControllers[selectedPreferencePaneIdentifier]
    }
 
-   private func didSetSelectedPreferencePaneIdentifier() {
+   private func configureTitleKeyValueObservation() {
       titleKeyValueObservation = viewControllerForTitle.observe(\.title, options: [.initial]) { [weak self] (viewController, change) in
          self?.titleDidChange()
       }
@@ -75,10 +75,10 @@ class PreferencesWindowTitleController {
          window.title = title
       } else {
          let appName = NSRunningApplication.current.localizedName ?? NSLocalizedString("App",
-                                                                                       bundle: .DMPreferencesWindow,
+                                                                                       bundle: .module,
                                                                                        comment: "A generic placeholder for the app name to be shown in the preferences window title if the app name could not be found.")
          window.title = String(format: NSLocalizedString("%1$@ Preferences",
-                                                         bundle: .DMPreferencesWindow,
+                                                         bundle: .module,
                                                          comment: "The format string for building a generic title for the preferences window. Argument 1 is the app name."),
                                locale: Locale.current,
                                appName)
