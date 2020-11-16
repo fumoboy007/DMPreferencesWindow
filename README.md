@@ -10,13 +10,14 @@ Written using Swift 4.2. Tested on macOS 10.14. MIT license.
 - Safari-like animation when switching between preference panes.
 - Automatic window title updates based on the selected preference pane.
 - Restores the last viewed preference pane.
+- Automatically hides the toolbar if there is only one preference pane.
 
 ## Developer Features
 
 - Fully written in Swift. Higher confidence in code correctness.
 - Implement your preference panes using view controllers.
 - Use Auto Layout in your preference pane view controllers.
-- Optionally pre-select a preference pane before showing the preferences window (when linking to a preference pane).
+- Optionally pre-select a preference pane before showing the preferences window (e.g. when linking to a preference pane).
 - Easy to develop a new interaction mechanism for selecting preference panes (e.g. segmented control instead of toolbar).
 - Easy localization.
 
