@@ -96,7 +96,7 @@ public class PreferencesWindowController: NSWindowController, PreferencePaneSele
    }
 
    required init?(coder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
+      fatalError("`init(coder:)` has not been implemented.")
    }
 
    private func initialSelectedPreferencePaneIdentifier(viewControllers: PreferencePaneViewControllers) -> PreferencePaneIdentifier {
@@ -128,12 +128,11 @@ public class PreferencesWindowController: NSWindowController, PreferencePaneSele
       }
    }
 
-   public func showWindow(_ sender: Any?,
-                          selecting preferencePaneIdentifier: PreferencePaneIdentifier) {
+   public func showWindow(selecting preferencePaneIdentifier: PreferencePaneIdentifier) {
       selectionController.selectedPreferencePaneIdentifier = preferencePaneIdentifier
       preferencePaneSelectionControllerDidChangeSelectedPreferencePaneIdentifier(selectionController)
 
-      showWindow(sender)
+      showWindow(nil)
    }
 
    // MARK: - Responding to Selected Preference Pane Identifier Changes
