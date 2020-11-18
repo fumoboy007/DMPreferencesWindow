@@ -1,0 +1,19 @@
+name: Tests
+
+on: [push]
+
+jobs:
+  test-macos:
+    name: Run Tests
+    runs-on: macos-latest
+
+    steps:
+      # TODO: We need at least Xcode 12.2 because it contains the macOS 11 SDK.
+      # Remove this step once Xcode 12.2 becomes the default.
+      - name: Switch Xcode version
+        run: "sudo xcode-select --switch /Applications/Xcode_12.2.app"
+      - name: Print Swift compiler version
+        run: "swift --version"
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: "swift test --parallel"
