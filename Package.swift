@@ -20,5 +20,11 @@ let package = Package(
       .target(
          name: "DMPreferencesWindow"
       ),
+      .testTarget(
+         name: "DMPreferencesWindowTests",
+         dependencies: [
+            "DMPreferencesWindow",
+         ]
+      ),
    ]
 )
