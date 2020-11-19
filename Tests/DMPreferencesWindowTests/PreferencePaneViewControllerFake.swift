@@ -57,7 +57,7 @@ class PreferencePaneViewControllerFake: NSViewController, PreferencePane, Toolba
    /**
     Creates and loads the view.
 
-    We can’t use Interface Builder because there is no Xcode command line interface to build a Swift Package Manager project.
+    We choose not to use Interface Builder because we want to support the `swift test` command instead of requiring the Xcode build system.
     (Only the Xcode build system can process XIB files.)
     */
    override func loadView() {
